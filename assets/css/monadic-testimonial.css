@@ -1,0 +1,10 @@
+.monadic-testimonial-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.monadic-testimonial-slider {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
