@@ -20,7 +20,7 @@
 
 
   jQuery(window).on('elementor/frontend/init', function () {
-      elementorFrontend.hooks.addAction('frontend/element_ready/monadic_testimonial.default', widgetFiestar);
+      elementorFrontend.hooks.addAction('frontend/element_ready/monadic-testimonial.default', widgetFiestar);
   });
 
 }(jQuery, window.elementorFrontend));
