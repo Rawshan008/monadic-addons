@@ -104,7 +104,7 @@ class Monadic_Testimonial extends \Elementor\Widget_Base {
 		$repeater->add_control(
 			'client_review', [
 				'label' => esc_html__('Client Review', 'monadic-addons'),
-				'type' => Controls_Manager::TEXTAREA,
+				'type' => Controls_Manager::WYSIWYG,
 				'placeholder' => esc_html__('Lorem ipsum dolor sit amet,', 'monadic-addons')
 			]
 		);
@@ -205,6 +205,36 @@ class Monadic_Testimonial extends \Elementor\Widget_Base {
 		);
 
 		$this->add_control(
+			'quote_icon', [
+				'label' => esc_html__('Quote Icon', 'monadic-addons'),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'quote_icon_color', [
+				'label' => esc_html__('Color', 'monadic-addons'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#ffffff',
+				'selectors' => [
+					'{{WRAPPER}} .monadic-testimonial-icons' => 'color: {{VALUE}}'
+				],
+			]
+		);
+
+		$this->add_control(
+			'quote_icon_bg_color', [
+				'label' => esc_html__('Background', 'monadic-addons'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#7958FC',
+				'selectors' => [
+					'{{WRAPPER}} .monadic-testimonial-icons' => 'background-color: {{VALUE}}'
+				],
+			]
+		);
+
+		$this->add_control(
 			'heading_style_arrow', [
 				'label' => esc_html__('Arrow', 'monadic-addons'),
 				'type' => Controls_Manager::HEADING,
@@ -259,6 +289,9 @@ class Monadic_Testimonial extends \Elementor\Widget_Base {
 				'max' => 60,
 				'setp' => 1,
 				'default' => 20,
+				'selectors' => [
+					'{{WRAPPER}} .monadic-testimonial-button-next, {{WRAPPER}} .monadic-testimonial-button-prev' => 'font-size: {{VALUE}}px'
+				],
 				'condition' => [
 					'show_arrow' => 'yes',
 				],
@@ -272,6 +305,20 @@ class Monadic_Testimonial extends \Elementor\Widget_Base {
 				'default' => '#000',
 				'selectors' => [
 					'{{WRAPPER}} .monadic-testimonial-button-next, {{WRAPPER}} .monadic-testimonial-button-prev' => 'color: {{VALUE}}'
+				],
+				'condition' => [
+					'show_arrow' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'arrow_bg_color', [
+				'label' => esc_html__('Background Color', 'monadic-addons'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#7958FC',
+				'selectors' => [
+					'{{WRAPPER}} .monadic-testimonial-button-next, {{WRAPPER}} .monadic-testimonial-button-prev' => 'background-color: {{VALUE}}'
 				],
 				'condition' => [
 					'show_arrow' => 'yes',
@@ -300,20 +347,6 @@ class Monadic_Testimonial extends \Elementor\Widget_Base {
 		);
 
 		$this->add_control(
-			'pagination_size', [
-				'label' => esc_html__('Size', 'monadic-addons'),
-				'type' => Controls_Manager::NUMBER,
-				'min' => 15,
-				'max' => 60,
-				'setp' => 1,
-				'default' => 20,
-				'condition' => [
-					'show_pagination' => 'yes',
-				],
-			]
-		);
-
-		$this->add_control(
 			'pagination_color', [
 				'label' => esc_html__('Color', 'monadic-addons'),
 				'type' => Controls_Manager::COLOR,
@@ -326,22 +359,6 @@ class Monadic_Testimonial extends \Elementor\Widget_Base {
 				]
 			]
 		);
-
-		$this->add_control(
-			'pagination_position', [
-				'label' => esc_html__('Position', 'monadic-addons'),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'inside' => esc_html__('Inside', 'monadic-addons'),
-					'outside' => esc_html__('Outside', 'monadic-addons'),
-				],
-				'default' => 'inside',
-				'condition' => [
-					'show_pagination' => 'yes',
-				],
-			]
-		);
-
 
 		$this->end_controls_section();
 	}
@@ -434,21 +451,31 @@ class Monadic_Testimonial extends \Elementor\Widget_Base {
 	 * Render Testimonial Items
 	 */
 	protected function render_tesimonial_items() {
-		$this->add_render_attribute('testimonial-item', 'class', 'testimonial-item swiper-slide', true);
+		$this->add_render_attribute('testimonial-item', 'class', 'monadic-testimonial-item swiper-slide', true);
 
 		$settings = $this->get_settings_for_display();
 
 		$testmonials = $settings['testimonials'];
 
+		$allow_html = [
+			'a' => [
+				'href' => [],
+				'title' => [],
+			],
+			'br' => [],
+			'strong' => [],
+			'em' => []
+		];
+
 		foreach($testmonials as $testmonial) {
 			?>
 			<div <?php $this->print_render_attribute_string('testimonial-item'); ?>>
-				<div class="icons">
+				<div class="monadic-testimonial-icons">
 					<?php Icons_Manager::render_icon( $testmonial['client_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 				</div>
+				<p><?php echo wp_kses($testmonial['client_review'], $allow_html); ?></p>
 				<h2><?php echo esc_html($testmonial['client_name']); ?></h2>
 				<h4><?php echo esc_html($testmonial['client_designation']); ?></h4>
-				<p><?php echo esc_html($testmonial['client_review']); ?></p>
 			</div>
 			<?php
 		}
