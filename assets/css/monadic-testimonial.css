@@ -25,6 +25,9 @@
 .monadic-testimonial-button-prev.swiper-button-disabled {
   opacity: 0.5;
 }
+.monadic-testimonial-button-next.swiper-button-disabled {
+  opacity: 0.5;
+}
 
 .monadic-testimonial-wrapper .swiper-container {
   width: calc(100% - 100px);
@@ -82,6 +85,7 @@
   width: 12px;
   height: 5px;
   border-radius: 10px;
+  background: ;
 }
 
 .monadic-testimonial-wrapper .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
@@ -91,3 +95,4 @@
 .monadic-testimonial-wrapper .swiper-pagination-bullet-active {
   width: 24px;
 }
+

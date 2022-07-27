@@ -3,6 +3,7 @@ namespace Monadic_Addons_Testimonial;
 use Elementor\Controls_Manager;
 use Elementor\Icons_Manager;
 use \Elementor\Repeater;
+use \Elementor\Group_Control_Typography;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -125,6 +126,13 @@ class Monadic_Testimonial extends \Elementor\Widget_Base {
 				'label' => esc_html__('Testimonials', 'monadic-addons'),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
+				'default' => [
+					[
+						'client_name' => esc_html__( 'Dianne Russell', 'monadic-addons' ),
+						'client_designation' => esc_html__( 'CTO at XYZ Ltd.', 'monadic-addons' ),
+						'client_review' => esc_html__( 'Lorem ipsum dolor sit amet, consectetur adip iscing elit. Sed sit libero', 'monadic-addons' ),
+					]
+				],
 				'title_field' => '{{{ client_name }}}',
 			]
 		);
@@ -135,7 +143,7 @@ class Monadic_Testimonial extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'options_section',
 			[
-				'label' => esc_html__( 'Options', 'monadic-addons' ),
+				'label' => esc_html__( 'Slider Options', 'monadic-addons' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -182,55 +190,13 @@ class Monadic_Testimonial extends \Elementor\Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'direction', [
-				'label' => esc_html__('Direction', 'monadic-addons'),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'left' => esc_html__('Left', 'monadic-addons'),
-					'right' => esc_html__('Right', 'monadic-addons'),
-				],
-				'default' => 'left',
-			]
-		);
-
 		$this->end_controls_section();
 
 		$this->start_controls_section(
 			'style_section',
 			[
-				'label' => esc_html__( 'Styles', 'monadic-addons' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'quote_icon', [
-				'label' => esc_html__('Quote Icon', 'monadic-addons'),
-				'type' => Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_control(
-			'quote_icon_color', [
-				'label' => esc_html__('Color', 'monadic-addons'),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#ffffff',
-				'selectors' => [
-					'{{WRAPPER}} .monadic-testimonial-icons' => 'color: {{VALUE}}'
-				],
-			]
-		);
-
-		$this->add_control(
-			'quote_icon_bg_color', [
-				'label' => esc_html__('Background', 'monadic-addons'),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#7958FC',
-				'selectors' => [
-					'{{WRAPPER}} .monadic-testimonial-icons' => 'background-color: {{VALUE}}'
-				],
+				'label' => esc_html__( 'Slider Styles', 'monadic-addons' ),
+				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
 
@@ -350,7 +316,7 @@ class Monadic_Testimonial extends \Elementor\Widget_Base {
 			'pagination_color', [
 				'label' => esc_html__('Color', 'monadic-addons'),
 				'type' => Controls_Manager::COLOR,
-				'default' => '#eee',
+				'default' => '#3C2C7D',
 				'condition' => [
 					'show_pagination' => 'yes',
 				],
@@ -359,6 +325,131 @@ class Monadic_Testimonial extends \Elementor\Widget_Base {
 				]
 			]
 		);
+
+		$this->end_controls_section();
+
+		/**
+		 * Style 
+		 */
+		$this->start_controls_section(
+			'style',
+			[
+				'label' => esc_html__( 'Styles', 'monadic-addons' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+		
+		$this->add_control(
+			'quote_icon', [
+				'label' => esc_html__('Quote Icon', 'monadic-addons'),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'quote_icon_color', [
+				'label' => esc_html__('Color', 'monadic-addons'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#ffffff',
+				'selectors' => [
+					'{{WRAPPER}} .monadic-testimonial-icons' => 'color: {{VALUE}}'
+				],
+			]
+		);
+
+		$this->add_control(
+			'quote_icon_bg_color', [
+				'label' => esc_html__('Background', 'monadic-addons'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#7958FC',
+				'selectors' => [
+					'{{WRAPPER}} .monadic-testimonial-icons' => 'background-color: {{VALUE}}'
+				],
+			]
+		);
+
+		$this->add_control(
+			's_client_name', [
+				'label' => esc_html__('Client Name', 'monadic-addons'),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(), [
+				'name' => 'client_name_typography',
+				'label' => esc_html__('Typography', 'monadic-addons'),
+				'selector' => '{{WRAPPER}} .monadic-testimonial-item h2',
+			]
+		);
+
+		$this->add_control(
+			'client_name_color', [
+				'label' => esc_html__('Color', 'monadic-addons'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#3C2C7D',
+				'selectors' => [
+					'{{WRAPPER}} .monadic-testimonial-item h2' => 'color: {{VALUE}}'
+				],
+			]
+		);
+
+		$this->add_control(
+			's_client_designation', [
+				'label' => esc_html__('Client Designation', 'monadic-addons'),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(), [
+				'name' => 'client_designation_typography',
+				'label' => esc_html__('Typography', 'monadic-addons'),
+				'selector' => '{{WRAPPER}} .monadic-testimonial-item h4',
+			]
+		);
+
+		$this->add_control(
+			'client_designation_color', [
+				'label' => esc_html__('Color', 'monadic-addons'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#3C2C7D',
+				'selectors' => [
+					'{{WRAPPER}} .monadic-testimonial-item h4' => 'color: {{VALUE}}'
+				],
+			]
+		);
+
+		$this->add_control(
+			's_client_review', [
+				'label' => esc_html__('Client Review', 'monadic-addons'),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(), [
+				'name' => 'client_review_typography',
+				'label' => esc_html__('Typography', 'monadic-addons'),
+				'selector' => '{{WRAPPER}} .monadic-testimonial-item p',
+			]
+		);
+
+		$this->add_control(
+			'client_review_color', [
+				'label' => esc_html__('Color', 'monadic-addons'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#3C2C7D',
+				'selectors' => [
+					'{{WRAPPER}} .monadic-testimonial-item p' => 'color: {{VALUE}}'
+				],
+			]
+		);
+
 
 		$this->end_controls_section();
 	}
@@ -379,13 +470,16 @@ class Monadic_Testimonial extends \Elementor\Widget_Base {
       'monadic-testimonial' => [
         'data-settings' =>  [
           wp_json_encode(array_filter([
-						"loop" => false,
+						"loop" => ("yes" == $settings['infinity_loop'])? true : false,
+						"autoplay" => ( "yes" == $settings["autoplay"] ) ? [ "delay" => $settings["autoplay_speed"] ] : false,
+						"speed"  => $settings["animation_speed"],
 						"navigation" => [
 							"nextEl" => ".monadic-testimonial-button-next",
 							"prevEl" => ".monadic-testimonial-button-prev",
 						],
 						"pagination" => [
-							"el" => ".swiper-pagination",
+							"el" => "#".$id." .swiper-pagination",
+							"clickable" => true,
 						],
           ]))
 				],
