@@ -1,0 +1,552 @@
+<?php
+namespace Monadic_Addons_Testimonial;
+use Elementor\Controls_Manager;
+use Elementor\Icons_Manager;
+use \Elementor\Repeater;
+use \Elementor\Group_Control_Typography;
+use \Elementor\Utils;
+use \Elementor\Control_Media;
+use \Elementor\Group_Control_Image_Size;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+/**
+ * Elementor Teams Widget.
+ */
+class Monadic_Teams extends \Elementor\Widget_Base {
+
+	/**
+	 * Get widget name.
+	 */
+	public function get_name() {
+		return 'monadic-teams';
+	}
+
+	/**
+	 * Get widget title.
+	 */
+	public function get_title() {
+		return esc_html__( 'Teams', 'monadic-addons' );
+	}
+
+	/**
+	 * Get widget icon.
+	 */
+	public function get_icon() {
+		return 'eicon-posts-group';
+	}
+
+	/**
+	 * Get custom help URL.
+	 */
+	public function get_custom_help_url() {
+		return '';
+	}
+
+	/**
+	 * Get Custom CSS Files
+	 */
+	public function get_style_depends() {
+		return ['monadic-teams'];
+	}
+
+	/**
+	 * Get Custom Js Files
+	 */
+	public function get_script_depends() {
+		return ['monadic-teams'];
+	}
+
+	/**
+	 * Get widget categories.
+	 */
+	public function get_categories() {
+		return [ 'monadic-addons' ];
+	}
+
+	/**
+	 * Get widget keywords.
+	 */
+	public function get_keywords() {
+		return [ 'testimonial', 'slider', 'client', 'teams' ];
+	}
+
+	/**
+	 * Register Teams widget controls.
+	 */
+	protected function register_controls() {
+
+		$this->start_controls_section(
+			'content_section',
+			[
+				'label' => esc_html__( 'Content', 'monadic-addons' ),
+				'tab' => Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+
+		$repeater = new Repeater();
+
+		$repeater->add_control(
+			'team_name', [
+				'label' => esc_html__('Team Name', 'monadic-addons'),
+				'type' => Controls_Manager::TEXTAREA,
+				'placeholder' => esc_html__('Jenny Wilson', 'monadic-addons')
+			]
+		);
+
+		$repeater->add_control(
+			'team_designation', [
+				'label' => esc_html__('Team Designation', 'monadic-addons'),
+				'type' => Controls_Manager::TEXTAREA,
+				'placeholder' => esc_html__('Digital Marketer', 'monadic-addons')
+			]
+		);
+
+		$repeater->add_control(
+			'team_image', [
+				'label' => esc_html__('Team Image', 'monadic-addons'),
+				'type' => Controls_Manager::MEDIA,
+				'default' => [
+					'url' => Utils::get_placeholder_image_src(),
+				],
+			]
+		);
+
+		$this->add_control(
+			'teams', [
+				'label' => esc_html__('Teams', 'monadic-addons'),
+				'type' => Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+					[
+						'team_name' => esc_html__( 'Jenny Wilson', 'monadic-addons' ),
+						'team_designation' => esc_html__( 'Digital Marketer', 'monadic-addons' ),
+					]
+				],
+				'title_field' => '{{{ team_name }}}',
+			]
+		);
+
+		$this->end_controls_section();
+
+
+		$this->start_controls_section(
+			'options_section',
+			[
+				'label' => esc_html__( 'Slider Options', 'monadic-addons' ),
+				'tab' => Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+
+		$this->add_control(
+			'autoplay', [
+				'label' => esc_html__('Autoplay?', 'monadic-addons'),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'True', 'monadic-addons' ),
+				'label_off' => esc_html__( 'False', 'monadic-addons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'autoplay_speed', [
+				'label' => esc_html__('Autoplay Speed', 'monadic-addons'),
+				'type' => Controls_Manager::NUMBER,
+				'default' => 3000,
+				'condition' => [
+					'autoplay' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'infinity_loop', [
+				'label' => esc_html__('Infinite Loop?', 'monadic-addons'),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Yes', 'monadic-addons' ),
+				'label_off' => esc_html__( 'No', 'monadic-addons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'animation_speed', [
+				'label' => esc_html__('Animation Speed', 'monadic-addons'),
+				'type' => Controls_Manager::NUMBER,
+				'default' => 500,
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'style_section',
+			[
+				'label' => esc_html__( 'Slider Styles', 'monadic-addons' ),
+				'tab' => Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		$this->add_control(
+			'heading_style_arrow', [
+				'label' => esc_html__('Arrow', 'monadic-addons'),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'show_arrow', [
+				'label' => esc_html__('Show?', 'monadic-addons'),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'monadic-addons' ),
+				'label_off' => esc_html__( 'Hide', 'monadic-addons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'arrow_left_icon', [
+				'label' => esc_html__('Left Icon', 'monadic-addons'),
+				'type' => Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-chevron-left',
+					'library' => 'fa-solid',
+				],
+				'condition' => [
+					'show_arrow' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'arrow_right_icon', [
+				'label' => esc_html__('Right Icon', 'monadic-addons'),
+				'type' => Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-chevron-right',
+					'library' => 'fa-solid',
+				],
+				'condition' => [
+					'show_arrow' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'arrow_size', [
+				'label' => esc_html__('Size', 'monadic-addons'),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 15,
+				'max' => 60,
+				'setp' => 1,
+				'default' => 20,
+				'selectors' => [
+					'{{WRAPPER}} .monadic-team-button-next, {{WRAPPER}} .monadic-team-button-prev' => 'font-size: {{VALUE}}px'
+				],
+				'condition' => [
+					'show_arrow' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'arrow_color', [
+				'label' => esc_html__('Color', 'monadic-addons'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#000',
+				'selectors' => [
+					'{{WRAPPER}} .monadic-team-button-next, {{WRAPPER}} .monadic-team-button-prev' => 'color: {{VALUE}}'
+				],
+				'condition' => [
+					'show_arrow' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'arrow_bg_color', [
+				'label' => esc_html__('Background Color', 'monadic-addons'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#7958FC',
+				'selectors' => [
+					'{{WRAPPER}} .monadic-team-button-next, {{WRAPPER}} .monadic-team-button-prev' => 'background-color: {{VALUE}}'
+				],
+				'condition' => [
+					'show_arrow' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'heading_style_pagination', [
+				'label' => esc_html__('Pagination', 'monadic-addons'),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+
+		$this->add_control(
+			'show_pagination', [
+				'label' => esc_html__('Show Pagination?', 'monadic-addons'),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'monadic-addons' ),
+				'label_off' => esc_html__( 'Hide', 'monadic-addons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'pagination_color', [
+				'label' => esc_html__('Color', 'monadic-addons'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#3C2C7D',
+				'condition' => [
+					'show_pagination' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .swiper-pagination-bullet' => 'background-color: {{VALUE}}'
+				]
+			]
+		);
+
+		$this->end_controls_section();
+
+		/**
+		 * Style 
+		 */
+		$this->start_controls_section(
+			'style',
+			[
+				'label' => esc_html__( 'Styles', 'monadic-addons' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+		
+
+		$this->add_control(
+			's_team_name', [
+				'label' => esc_html__('Team Name', 'monadic-addons'),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(), [
+				'name' => 'team_name_typography',
+				'label' => esc_html__('Typography', 'monadic-addons'),
+				'selector' => '{{WRAPPER}} .monadic-team-item h2',
+			]
+		);
+
+		$this->add_control(
+			'team_name_color', [
+				'label' => esc_html__('Color', 'monadic-addons'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#3C2C7D',
+				'selectors' => [
+					'{{WRAPPER}} .monadic-team-item h2' => 'color: {{VALUE}}'
+				],
+			]
+		);
+
+		$this->add_control(
+			's_team_designation', [
+				'label' => esc_html__('Team Designation', 'monadic-addons'),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(), [
+				'name' => 'team_designation_typography',
+				'label' => esc_html__('Typography', 'monadic-addons'),
+				'selector' => '{{WRAPPER}} .monadic-team-item h4',
+			]
+		);
+
+		$this->add_control(
+			'team_designation_color', [
+				'label' => esc_html__('Color', 'monadic-addons'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#3C2C7D',
+				'selectors' => [
+					'{{WRAPPER}} .monadic-team-item h4' => 'color: {{VALUE}}'
+				],
+			]
+		);
+
+		$this->add_control(
+			's_team_review', [
+				'label' => esc_html__('Team Review', 'monadic-addons'),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(), [
+				'name' => 'team_review_typography',
+				'label' => esc_html__('Typography', 'monadic-addons'),
+				'selector' => '{{WRAPPER}} .monadic-team-item p',
+			]
+		);
+
+		$this->add_control(
+			'team_review_color', [
+				'label' => esc_html__('Color', 'monadic-addons'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#3C2C7D',
+				'selectors' => [
+					'{{WRAPPER}} .monadic-team-item p' => 'color: {{VALUE}}'
+				],
+			]
+		);
+
+
+		$this->end_controls_section();
+	}
+
+
+
+	/**
+	 * Render Team Header 
+	 */
+	protected function render_header() {
+		$settings = $this->get_settings_for_display();
+		$id  = 'monadic-team-' . $this->get_id();
+		$this->add_render_attribute( 'monadic-team', 'id', $id );
+		$this->add_render_attribute( 'monadic-team', 'class', 'monadic-team-wrapper' );
+		$this->add_render_attribute( 'monadic-team-slider', 'class', ['monadic-team-slider','swiper-container'] );
+
+		$this->add_render_attribute([
+      'monadic-team' => [
+        'data-settings' =>  [
+          wp_json_encode(array_filter([
+						"loop" => ("yes" == $settings['infinity_loop'])? true : false,
+						"autoplay" => ( "yes" == $settings["autoplay"] ) ? [ "delay" => $settings["autoplay_speed"] ] : false,
+						"speed"  => $settings["animation_speed"],
+						"navigation" => [
+							"nextEl" => ".monadic-team-button-next",
+							"prevEl" => ".monadic-team-button-prev",
+						],
+						"pagination" => [
+							"el" => "#".$id." .swiper-pagination",
+							"clickable" => true,
+						],
+          ]))
+				],
+      ]
+    ]);
+
+		?>
+		<div <?php $this->print_render_attribute_string( 'monadic-team' ); ?>>
+				<div <?php $this->print_render_attribute_string( 'monadic-team-slider' ); ?>>
+						<div class="swiper-wrapper">
+
+		<?php
+
+	}
+
+	/**
+	 * Render Team Arrow
+	 */
+	protected function render_arrow() {
+		$settings = $this->get_settings_for_display();
+		?>
+		<div class="monadic-team-button-next">
+			<?php Icons_Manager::render_icon( $settings['arrow_left_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+		</div>
+		<div class="monadic-team-button-prev">
+			<?php Icons_Manager::render_icon( $settings['arrow_right_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Render Team Pagination
+	 */
+	protected function render_pagination() {
+		?>
+			<div class="swiper-pagination"></div>
+		<?php
+	}
+
+	/**
+	 * Render Team Footer
+	 */
+	protected function render_footer() {
+		$settings = $this->get_settings_for_display();
+		?>
+					</div>
+				<?php 
+					if('yes' === $settings['show_arrow']) {
+						$this->render_arrow();
+					}
+
+					if('yes' === $settings['show_pagination']) {
+						$this->render_pagination();
+					}
+				?>
+
+			</div>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Render Team Items
+	 */
+	protected function render_team_items() {
+		$settings = $this->get_settings_for_display();
+		$this->add_render_attribute('team-item', 'class', 'monadic-team-item swiper-slide', true);
+
+		$teams = $settings['teams'];
+
+		foreach($teams as $team) {
+
+			// print_r($team);
+			// echo wp_get_attachment_image( $team['team_image']['id'], 'full' );
+
+			$this->add_render_attribute( 'image', 'src', $team['team_image']['url'] );
+			$this->add_render_attribute( 'image', 'alt', Control_Media::get_image_alt( $team['team_image'] ) );
+			$this->add_render_attribute( 'image', 'title', Control_Media::get_image_title( $team['team_image'] ) );
+			$this->add_render_attribute( 'image', 'class', 'monadic-team-image' );
+			?>
+			<div <?php $this->print_render_attribute_string('team-item'); ?>>
+				<?php echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'image' ); ?>
+				<h1><?php echo esc_html($team['team_name']); ?></h1>
+			</div>
+			<?php
+		}
+	}
+
+	/**
+	 * Render Team widget Output.
+	 */
+	protected function render() {
+		$settings = $this->get_settings_for_display();
+		$this->add_render_attribute( 'monadic-team-container', 'class', 'monadic-team-container' );
+		?>
+		<div <?php $this->print_render_attribute_string('monadic-team-container'); ?>>
+			<?php 
+				$this->render_header();
+				$this->render_team_items();
+				$this->render_footer();
+			?>
+		</div>
+		<?php
+	}
+
+}
