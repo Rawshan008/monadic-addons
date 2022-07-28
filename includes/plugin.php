@@ -154,9 +154,9 @@
      */
     public function monadic_elementor_widget_categories($elements_manager) {
       $elements_manager->add_category(
-        'eathim-addons',
+        'monadic-addons',
         [
-          'title' => esc_html__( 'Monadic Addons', 'eathim-addons' ),
+          'title' => esc_html__( 'Monadic Addons', 'monadic-addons' ),
           'icon' => 'fa fa-plug',
         ]
       );
@@ -177,7 +177,7 @@
       /**
        * Custom Files
        */
-      // wp_register_script( 'eathim-image-slider', EATHIM_ADDONS_ASSETS .'js/eathim-image-slider.js' );
+      wp_register_script( 'monadic-testimonial', MONADIC_ADDONS_ASSETS .'js/monadic-testimonial.js' );
       // wp_register_script( 'eathim-justified-gallery', EATHIM_ADDONS_ASSETS .'js/eathim-justified-gallery.js', ['jquery'], time(), true );
       // wp_register_script( 'eathim-filter-gallery', EATHIM_ADDONS_ASSETS .'js/eathim-filter-gallery.js', ['jquery'], time(), true );
     }
@@ -196,6 +196,7 @@
       /**
        * Custom CSS
        */
+      wp_register_style('monadic-testimonial', MONADIC_ADDONS_ASSETS . 'css/monadic-testimonial.css' );
 
     }
 
@@ -204,14 +205,9 @@
      */
     public function register_widgets( $widgets_manager ) {
 
-      // require_once( __DIR__ . '/widgets/eathim-image-slider-widget.php' );
-      // require_once( __DIR__ . '/widgets/eathim-justified-gallery-widget.php' );
-      // require_once( __DIR__ . '/widgets/eathim-filter-gallery-widget.php' );
+      require_once( __DIR__ . '/widgets/monadic-testimonial.php' );
   
-      // $widgets_manager->register( new \Eathim_Image_Slider\Eathim_Image_Slider_Widget() );
-      // $widgets_manager->register( new \Eathim_Justified_Gallery\Eathim_Justified_Gallery_Widget() );
-      // $widgets_manager->register( new \Eathim_Filter_Gallery\Eathim_Filter_Gallery_Widget() );
-  
+      $widgets_manager->register( new \Monadic_Addons_Testimonial\Monadic_Testimonial() );
     }
 
   }
