@@ -158,7 +158,7 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'slider_per_view', [
 				'label' => esc_html__('Slider Per View (1-5)', 'monadic-addons'),
 				'type' => Controls_Manager::NUMBER,
@@ -169,7 +169,7 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'slider_per_group', [
 				'label' => esc_html__('Slider Per Group (1-5)', 'monadic-addons'),
 				'type' => Controls_Manager::NUMBER,
@@ -187,7 +187,7 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 				'label_on' => esc_html__( 'True', 'monadic-addons' ),
 				'label_off' => esc_html__( 'False', 'monadic-addons' ),
 				'return_value' => 'yes',
-				'default' => 'yes',
+				'default' => 'no',
 			]
 		);
 
@@ -209,7 +209,7 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 				'label_on' => esc_html__( 'Yes', 'monadic-addons' ),
 				'label_off' => esc_html__( 'No', 'monadic-addons' ),
 				'return_value' => 'yes',
-				'default' => 'yes',
+				'default' => 'no',
 			]
 		);
 
@@ -239,99 +239,6 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 				'max' => 50,
 				'step' => 1,
 				'default' => 30,
-			]
-		);
-
-
-		$this->add_control(
-			'heading_style_arrow', [
-				'label' => esc_html__('Arrow', 'monadic-addons'),
-				'type' => Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_control(
-			'show_arrow', [
-				'label' => esc_html__('Show?', 'monadic-addons'),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'monadic-addons' ),
-				'label_off' => esc_html__( 'Hide', 'monadic-addons' ),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
-
-		$this->add_control(
-			'arrow_left_icon', [
-				'label' => esc_html__('Left Icon', 'monadic-addons'),
-				'type' => Controls_Manager::ICONS,
-				'default' => [
-					'value' => 'fas fa-chevron-left',
-					'library' => 'fa-solid',
-				],
-				'condition' => [
-					'show_arrow' => 'yes',
-				],
-			]
-		);
-
-		$this->add_control(
-			'arrow_right_icon', [
-				'label' => esc_html__('Right Icon', 'monadic-addons'),
-				'type' => Controls_Manager::ICONS,
-				'default' => [
-					'value' => 'fas fa-chevron-right',
-					'library' => 'fa-solid',
-				],
-				'condition' => [
-					'show_arrow' => 'yes',
-				],
-			]
-		);
-
-		$this->add_control(
-			'arrow_size', [
-				'label' => esc_html__('Size', 'monadic-addons'),
-				'type' => Controls_Manager::NUMBER,
-				'min' => 15,
-				'max' => 60,
-				'setp' => 1,
-				'default' => 20,
-				'selectors' => [
-					'{{WRAPPER}} .monadic-team-button-next, {{WRAPPER}} .monadic-team-button-prev' => 'font-size: {{VALUE}}px'
-				],
-				'condition' => [
-					'show_arrow' => 'yes',
-				],
-			]
-		);
-
-		$this->add_control(
-			'arrow_color', [
-				'label' => esc_html__('Color', 'monadic-addons'),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#000',
-				'selectors' => [
-					'{{WRAPPER}} .monadic-team-button-next, {{WRAPPER}} .monadic-team-button-prev' => 'color: {{VALUE}}'
-				],
-				'condition' => [
-					'show_arrow' => 'yes',
-				],
-			]
-		);
-
-		$this->add_control(
-			'arrow_bg_color', [
-				'label' => esc_html__('Background Color', 'monadic-addons'),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#7958FC',
-				'selectors' => [
-					'{{WRAPPER}} .monadic-team-button-next, {{WRAPPER}} .monadic-team-button-prev' => 'background-color: {{VALUE}}'
-				],
-				'condition' => [
-					'show_arrow' => 'yes',
-				],
 			]
 		);
 
@@ -382,6 +289,35 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 			]
 		);
 		
+		$this->add_control(
+			's_team_image', [
+				'label' => esc_html__('Team Image', 'monadic-addons'),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'team_image_height', [
+				'label' => esc_html__('Image Height', 'monadic-addons'),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px'],
+				'range' => [
+					'px' => [
+						'min' => 300,
+						'step' => 1,
+						'max' => 1200,
+					]
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 380
+				],
+				'selectors' => [
+					'{{WRAPPER}} .monadic-team-image img' => 'height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
 
 		$this->add_control(
 			's_team_name', [
@@ -395,7 +331,7 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 			Group_Control_Typography::get_type(), [
 				'name' => 'team_name_typography',
 				'label' => esc_html__('Typography', 'monadic-addons'),
-				'selector' => '{{WRAPPER}} .monadic-team-item h2',
+				'selector' => '{{WRAPPER}} .monadic-item-content h3',
 			]
 		);
 
@@ -405,7 +341,7 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '#3C2C7D',
 				'selectors' => [
-					'{{WRAPPER}} .monadic-team-item h2' => 'color: {{VALUE}}'
+					'{{WRAPPER}} .monadic-item-content h3' => 'color: {{VALUE}}'
 				],
 			]
 		);
@@ -422,7 +358,7 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 			Group_Control_Typography::get_type(), [
 				'name' => 'team_designation_typography',
 				'label' => esc_html__('Typography', 'monadic-addons'),
-				'selector' => '{{WRAPPER}} .monadic-team-item h4',
+				'selector' => '{{WRAPPER}} .monadic-item-content',
 			]
 		);
 
@@ -432,38 +368,10 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '#3C2C7D',
 				'selectors' => [
-					'{{WRAPPER}} .monadic-team-item h4' => 'color: {{VALUE}}'
+					'{{WRAPPER}} .monadic-item-content' => 'color: {{VALUE}}'
 				],
 			]
 		);
-
-		$this->add_control(
-			's_team_review', [
-				'label' => esc_html__('Team Review', 'monadic-addons'),
-				'type' => Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(), [
-				'name' => 'team_review_typography',
-				'label' => esc_html__('Typography', 'monadic-addons'),
-				'selector' => '{{WRAPPER}} .monadic-team-item p',
-			]
-		);
-
-		$this->add_control(
-			'team_review_color', [
-				'label' => esc_html__('Color', 'monadic-addons'),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#3C2C7D',
-				'selectors' => [
-					'{{WRAPPER}} .monadic-team-item p' => 'color: {{VALUE}}'
-				],
-			]
-		);
-
 
 		$this->end_controls_section();
 	}
@@ -478,6 +386,11 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 		$id  = 'monadic-team-' . $this->get_id();
 		$this->add_render_attribute( 'monadic-team', 'id', $id );
 		$this->add_render_attribute( 'monadic-team', 'class', 'monadic-team-wrapper' );
+
+		if('yes' === $settings['show_pagination']) {
+			$this->add_render_attribute( 'monadic-team-slider', 'class', 'monadic-team-slider-active-pagination' );
+		}
+
 		$this->add_render_attribute( 'monadic-team-slider', 'class', ['monadic-team-slider','swiper-container'] );
 
 		$this->add_render_attribute([
@@ -487,12 +400,18 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 						"loop" => ("yes" == $settings['infinity_loop'])? true : false,
 						"autoplay" => ( "yes" == $settings["autoplay"] ) ? [ "delay" => $settings["autoplay_speed"] ] : false,
 						"speed"  => $settings["animation_speed"],
-						"slidesPerView" => (isset($settings['slider_per_view']) ? $settings['slider_per_view'] : 3),
+						"slidesPerView" => (isset($settings['slider_per_view_mobile']) ? (int) $settings['slider_per_view_mobile'] : 3),
         		"spaceBetween" => (isset($settings['space_between']) ? $settings['space_between'] : 30),
-						"slidesPerGroup" => (isset($settings['slider_per_group']) ? $settings['slider_per_group'] : 1),
-						"navigation" => [
-							"nextEl" => ".monadic-team-button-next",
-							"prevEl" => ".monadic-team-button-prev",
+						"slidesPerGroup" => (isset($settings['slider_per_group_mobile']) ? (int) $settings['slider_per_group_mobile'] : 1),
+						"breakpoints" => [
+							"767" => [
+								"slidesPerView" => isset($settings['slider_per_view_tablet']) ? (int) $settings['slider_per_view_tablet'] : 1,
+								"slidesPerGroup" => isset($settings['slider_per_group_tablet']) ? (int) $settings['slider_per_group_tablet'] : 1,
+							],
+							"1023" => [
+								"slidesPerView" => isset($settings['slider_per_view']) ? (int) $settings['slider_per_view'] : 1,
+								"slidesPerGroup" => isset($settings['slider_per_group']) ? (int) $settings['slider_per_group'] : 1,
+							],
 						],
 						"pagination" => [
 							"el" => "#".$id." .swiper-pagination",
@@ -513,21 +432,6 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 	}
 
 	/**
-	 * Render Team Arrow
-	 */
-	protected function render_arrow() {
-		$settings = $this->get_settings_for_display();
-		?>
-		<div class="monadic-team-button-next">
-			<?php Icons_Manager::render_icon( $settings['arrow_left_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-		</div>
-		<div class="monadic-team-button-prev">
-			<?php Icons_Manager::render_icon( $settings['arrow_right_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-		</div>
-		<?php
-	}
-
-	/**
 	 * Render Team Pagination
 	 */
 	protected function render_pagination() {
@@ -544,10 +448,6 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 		?>
 					</div>
 				<?php 
-					if('yes' === $settings['show_arrow']) {
-						$this->render_arrow();
-					}
-
 					if('yes' === $settings['show_pagination']) {
 						$this->render_pagination();
 					}
@@ -574,7 +474,10 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 					<img src="<?php echo esc_url($team['team_image']['url'])?>" alt="<?php echo esc_attr($team['team_name']);?>">
 				</div>
 
-				<h1><?php echo esc_html($team['team_name']); ?></h1>
+				<div class="monadic-item-content">
+					<h3><?php echo esc_html($team['team_name']); ?></h3>
+					<p><?php echo esc_html($team['team_designation']); ?></p>
+				</div>
 			</div>
 			<?php
 		}

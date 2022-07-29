@@ -198,6 +198,7 @@
        * Custom CSS
        */
       wp_register_style('monadic-testimonial', MONADIC_ADDONS_ASSETS . 'css/monadic-testimonial.css' );
+      wp_register_style('monadic-teams', MONADIC_ADDONS_ASSETS . 'css/monadic-teams.css' );
 
     }
 

@@ -1,0 +1,49 @@
+.monadic-team-slider-active-pagination {
+  padding-bottom: 50px;
+}
+
+.monadic-team-item h3 {
+  font-size: 34px;
+  line-height: 30px;
+  color: #3C2C7D;
+  margin-bottom: 10px;
+  font-family: 'PT Sans';
+  font-weight: 700;
+}
+
+.monadic-team-item {
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.monadic-team-image img {
+  width: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.monadic-item-content {
+  font-family: 'Roboto';
+  padding: 20px 10px 20px 10px;
+  font-size: 14px;
+  line-height: 22px;
+  color: #5A517D;
+}
+
+.monadic-item-content p {
+  margin: 0;
+}
+
+.monadic-team-wrapper .swiper-pagination-bullet {
+  width: 12px;
+  height: 5px;
+  border-radius: 10px;
+}
+
+.monadic-team-wrapper .swiper-pagination-bullet {
+  margin: 0 4px;
+}
+
+.monadic-team-wrapper .swiper-pagination-bullet-active {
+  width: 24px;
+}
