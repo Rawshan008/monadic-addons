@@ -111,7 +111,7 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 				'type' => Controls_Manager::MEDIA,
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
-				],
+				]
 			]
 		);
 
@@ -124,6 +124,23 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 					[
 						'team_name' => esc_html__( 'Jenny Wilson', 'monadic-addons' ),
 						'team_designation' => esc_html__( 'Digital Marketer', 'monadic-addons' ),
+						'team_image' => [
+							'url' => Utils::get_placeholder_image_src(),
+						]
+					],
+					[
+						'team_name' => esc_html__( 'Mike Jason', 'monadic-addons' ),
+						'team_designation' => esc_html__( 'Software Engineer', 'monadic-addons' ),
+						'team_image' => [
+							'url' => Utils::get_placeholder_image_src(),
+						]
+					],
+					[
+						'team_name' => esc_html__( 'Isabella Croline', 'monadic-addons' ),
+						'team_designation' => esc_html__( 'UI UX Designer', 'monadic-addons' ),
+						'team_image' => [
+							'url' => Utils::get_placeholder_image_src(),
+						]
 					]
 				],
 				'title_field' => '{{{ team_name }}}',
@@ -141,6 +158,27 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'slider_per_view', [
+				'label' => esc_html__('Slider Per View (1-5)', 'monadic-addons'),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 1,
+				'max' => 5,
+				'step' => 1,
+				'default' => 3,
+			]
+		);
+
+		$this->add_control(
+			'slider_per_group', [
+				'label' => esc_html__('Slider Per Group (1-5)', 'monadic-addons'),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 1,
+				'max' => 5,
+				'step' => 1,
+				'default' => 3,
+			]
+		);
 
 		$this->add_control(
 			'autoplay', [
@@ -192,6 +230,18 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
+
+		$this->add_control(
+			'space_between', [
+				'label' => esc_html__('Space Between (1-50)', 'monadic-addons'),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 1,
+				'max' => 50,
+				'step' => 1,
+				'default' => 30,
+			]
+		);
+
 
 		$this->add_control(
 			'heading_style_arrow', [
@@ -437,6 +487,9 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 						"loop" => ("yes" == $settings['infinity_loop'])? true : false,
 						"autoplay" => ( "yes" == $settings["autoplay"] ) ? [ "delay" => $settings["autoplay_speed"] ] : false,
 						"speed"  => $settings["animation_speed"],
+						"slidesPerView" => (isset($settings['slider_per_view']) ? $settings['slider_per_view'] : 3),
+        		"spaceBetween" => (isset($settings['space_between']) ? $settings['space_between'] : 30),
+						"slidesPerGroup" => (isset($settings['slider_per_group']) ? $settings['slider_per_group'] : 1),
 						"navigation" => [
 							"nextEl" => ".monadic-team-button-next",
 							"prevEl" => ".monadic-team-button-prev",
@@ -515,17 +568,12 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 		$teams = $settings['teams'];
 
 		foreach($teams as $team) {
-
-			// print_r($team);
-			// echo wp_get_attachment_image( $team['team_image']['id'], 'full' );
-
-			$this->add_render_attribute( 'image', 'src', $team['team_image']['url'] );
-			$this->add_render_attribute( 'image', 'alt', Control_Media::get_image_alt( $team['team_image'] ) );
-			$this->add_render_attribute( 'image', 'title', Control_Media::get_image_title( $team['team_image'] ) );
-			$this->add_render_attribute( 'image', 'class', 'monadic-team-image' );
 			?>
 			<div <?php $this->print_render_attribute_string('team-item'); ?>>
-				<?php echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'image' ); ?>
+				<div class="monadic-team-image">
+					<img src="<?php echo esc_url($team['team_image']['url'])?>" alt="<?php echo esc_attr($team['team_name']);?>">
+				</div>
+
 				<h1><?php echo esc_html($team['team_name']); ?></h1>
 			</div>
 			<?php
