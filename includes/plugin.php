@@ -178,6 +178,7 @@
        * Custom Files
        */
       wp_register_script( 'monadic-testimonial', MONADIC_ADDONS_ASSETS .'js/monadic-testimonial.js' );
+      wp_register_script( 'monadic-teams', MONADIC_ADDONS_ASSETS .'js/monadic-teams.js' );
       // wp_register_script( 'eathim-justified-gallery', EATHIM_ADDONS_ASSETS .'js/eathim-justified-gallery.js', ['jquery'], time(), true );
       // wp_register_script( 'eathim-filter-gallery', EATHIM_ADDONS_ASSETS .'js/eathim-filter-gallery.js', ['jquery'], time(), true );
     }
@@ -197,6 +198,7 @@
        * Custom CSS
        */
       wp_register_style('monadic-testimonial', MONADIC_ADDONS_ASSETS . 'css/monadic-testimonial.css' );
+      wp_register_style('monadic-teams', MONADIC_ADDONS_ASSETS . 'css/monadic-teams.css' );
 
     }
 
@@ -206,8 +208,10 @@
     public function register_widgets( $widgets_manager ) {
 
       require_once( __DIR__ . '/widgets/monadic-testimonial.php' );
+      require_once( __DIR__ . '/widgets/monadic-teams.php' );
   
       $widgets_manager->register( new \Monadic_Addons_Testimonial\Monadic_Testimonial() );
+      $widgets_manager->register( new \Monadic_Addons_Testimonial\Monadic_Teams() );
     }
 
   }
