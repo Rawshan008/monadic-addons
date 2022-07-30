@@ -1,0 +1,40 @@
+:root {
+  --image-grid-column: 3;
+}
+
+.monadic-image-gallery-wrapper {
+  overflow: hidden;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.monadic-image-gallery-item {
+  display: block;
+  float: left;
+  overflow: hidden;
+  width:calc(100%/var(--image-grid-column, 4));
+  border: 10px solid transparent;
+}
+
+.monadic-image-gallery-item  img {
+  display: block;
+  width: 100%;
+  border-radius: inherit;
+  -webkit-transition: all .25s;
+  transition: all .25s;
+  -o-object-fit: cover;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.mfp-image-holder .mfp-close, 
+.mfp-iframe-holder .mfp-close,
+button.mfp-close, 
+button.mfp-arrow{
+  background-color: transparent;
+}
+
+.mfp-arrow:hover, .mfp-arrow:focus {
+  background-color: transparent;
+  outline: none;
+}
