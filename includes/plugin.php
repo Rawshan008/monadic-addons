@@ -169,9 +169,8 @@
       /**
        * Lib files
        */
-      wp_register_script( 'm-isotope', MONADIC_ADDONS_ASSETS .'lib/js/isotope.pkgd.min.js', ['jquery'], MONADIC_ADDONS_VERSION, true );
-      // wp_register_script( 'isotope', EATHIM_ADDONS_ASSETS .'lib/isotope/js/isotope.pkgd.min.js', ['jquery'], EATHIM_ADDONS_VERSION, true );
-      // wp_register_script( 'magnific-popup', EATHIM_ADDONS_ASSETS .'lib/magnificPopup/js/jquery.magnific-popup.min.js', ['jquery'], EATHIM_ADDONS_VERSION, true );
+      wp_register_script( 'isotope', MONADIC_ADDONS_ASSETS .'lib/js/isotope.pkgd.min.js', ['jquery'], MONADIC_ADDONS_VERSION, true );
+      wp_register_script( 'magnific-popup', MONADIC_ADDONS_ASSETS .'lib/js/jquery.magnific-popup.min.js', ['jquery'], MONADIC_ADDONS_VERSION, true );
       
 
       /**
@@ -189,9 +188,7 @@
       /**
        * Lib CSS
        */
-      // wp_enqueue_style('eathim-addons', EATHIM_ADDONS_ASSETS .'css/eathim-addons.css' );
-      // wp_register_style('justifiedGallery', EATHIM_ADDONS_ASSETS .'lib/justifiedGallery/css/justifiedGallery.min.css' );
-      // wp_register_style('magnific-popup', EATHIM_ADDONS_ASSETS .'lib/magnificPopup/css/magnific-popup.css' );
+      wp_register_style('magnific-popup', EATHIM_ADDONS_ASSETS .'lib/css/magnific-popup.css' );
 
       /**
        * Custom CSS

@@ -49,14 +49,14 @@ class Monadic_Image_Gallery extends \Elementor\Widget_Base {
 	 * Get Custom CSS Files
 	 */
 	public function get_style_depends() {
-		return ['monadic-image-gallery'];
+		return ['magnific-popup', 'monadic-image-gallery'];
 	}
 
 	/**
 	 * Get Custom Js Files
 	 */
 	public function get_script_depends() {
-		return ['m-isotope','monadic-image-gallery'];
+		return ['isotope', 'magnific-popup', 'monadic-image-gallery'];
 	}
 
 	/**
@@ -100,225 +100,67 @@ class Monadic_Image_Gallery extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'options_section',
 			[
-				'label' => esc_html__( 'Slider Options', 'monadic-addons' ),
+				'label' => esc_html__( 'Options', 'monadic-addons' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
 
-		$this->add_responsive_control(
-			'slider_per_view', [
-				'label' => esc_html__('Slider Per View (1-5)', 'monadic-addons'),
-				'type' => Controls_Manager::NUMBER,
-				'min' => 1,
-				'max' => 5,
-				'step' => 1,
-				'default' => 3,
-			]
-		);
 
 		$this->add_responsive_control(
-			'slider_per_group', [
-				'label' => esc_html__('Slider Per Group (1-5)', 'monadic-addons'),
-				'type' => Controls_Manager::NUMBER,
-				'min' => 1,
-				'max' => 5,
-				'step' => 1,
+			'columns', [
+				'label' => esc_html__('Column', 'monadic-addons'),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					1 => esc_html__('1 Column', 'monadic-addons'),
+					2 => esc_html__('2 Column', 'monadic-addons'),
+					3 => esc_html__('3 Column', 'monadic-addons'),
+					4 => esc_html__('4 Column', 'monadic-addons'),
+					5 => esc_html__('5 Column', 'monadic-addons'),
+					6 => esc_html__('6 Column', 'monadic-addons'),
+				],
 				'default' => 3,
-			]
-		);
-
-		$this->add_control(
-			'autoplay', [
-				'label' => esc_html__('Autoplay?', 'monadic-addons'),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'True', 'monadic-addons' ),
-				'label_off' => esc_html__( 'False', 'monadic-addons' ),
-				'return_value' => 'yes',
-				'default' => 'no',
-			]
-		);
-
-		$this->add_control(
-			'autoplay_speed', [
-				'label' => esc_html__('Autoplay Speed', 'monadic-addons'),
-				'type' => Controls_Manager::NUMBER,
-				'default' => 3000,
-				'condition' => [
-					'autoplay' => 'yes',
-				],
-			]
-		);
-
-		$this->add_control(
-			'infinity_loop', [
-				'label' => esc_html__('Infinite Loop?', 'monadic-addons'),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Yes', 'monadic-addons' ),
-				'label_off' => esc_html__( 'No', 'monadic-addons' ),
-				'return_value' => 'yes',
-				'default' => 'no',
-			]
-		);
-
-		$this->add_control(
-			'animation_speed', [
-				'label' => esc_html__('Animation Speed', 'monadic-addons'),
-				'type' => Controls_Manager::NUMBER,
-				'default' => 500,
-			]
-		);
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'style_section',
-			[
-				'label' => esc_html__( 'Slider Styles', 'monadic-addons' ),
-				'tab' => Controls_Manager::TAB_CONTENT,
-			]
-		);
-
-		$this->add_control(
-			'space_between', [
-				'label' => esc_html__('Space Between (1-50)', 'monadic-addons'),
-				'type' => Controls_Manager::NUMBER,
-				'min' => 1,
-				'max' => 50,
-				'step' => 1,
-				'default' => 30,
-			]
-		);
-
-		$this->add_control(
-			'heading_style_pagination', [
-				'label' => esc_html__('Pagination', 'monadic-addons'),
-				'type' => Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-
-
-		$this->add_control(
-			'show_pagination', [
-				'label' => esc_html__('Show Pagination?', 'monadic-addons'),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'monadic-addons' ),
-				'label_off' => esc_html__( 'Hide', 'monadic-addons' ),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
-
-		$this->add_control(
-			'pagination_color', [
-				'label' => esc_html__('Color', 'monadic-addons'),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#3C2C7D',
-				'condition' => [
-					'show_pagination' => 'yes',
-				],
 				'selectors' => [
-					'{{WRAPPER}} .swiper-pagination-bullet' => 'background-color: {{VALUE}}'
-				]
-			]
-		);
-
-		$this->end_controls_section();
-
-		/**
-		 * Style 
-		 */
-		$this->start_controls_section(
-			'style',
-			[
-				'label' => esc_html__( 'Styles', 'monadic-addons' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-		
-		$this->add_control(
-			's_team_image', [
-				'label' => esc_html__('Team Image', 'monadic-addons'),
-				'type' => Controls_Manager::HEADING,
-				'separator' => 'before',
+					'{{WRAPPER}} .monadic-image-gallery-item' => '--image-grid-column: {{VALUE}};',
+				],
+				'style_transfer' => true,
 			]
 		);
 
 		$this->add_control(
-			'team_image_height', [
-				'label' => esc_html__('Image Height', 'monadic-addons'),
+			'layout', [
+				'label' => esc_html__('Layout', 'monadic-addons'),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'fitRows' => esc_html__('FitRows', 'monadic-addons'),
+					'masonry' => esc_html__('Masonry', 'monadic-addons'),
+				],
+				'default' => 'masonry',
+				'render' => 'none',
+				'frontend_available' => true,
+				'style_transfer' => true,
+			],
+		);
+
+		$this->add_responsive_control(
+			'image_height', [
+				'label' => esc_html__('Image height', 'monadic-addons'),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px'],
 				'range' => [
 					'px' => [
-						'min' => 300,
-						'step' => 1,
-						'max' => 1200,
+						'min' => 100,
+						'max' => 1000
 					]
 				],
-				'default' => [
-					'unit' => 'px',
-					'size' => 380
-				],
 				'selectors' => [
-					'{{WRAPPER}} .monadic-team-image img' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .monadic-image-gallery-item img' => 'height: {{SIZE}}{{UNIT}}',
 				],
-			]
-		);
-
-		$this->add_control(
-			's_team_name', [
-				'label' => esc_html__('Team Name', 'monadic-addons'),
-				'type' => Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(), [
-				'name' => 'team_name_typography',
-				'label' => esc_html__('Typography', 'monadic-addons'),
-				'selector' => '{{WRAPPER}} .monadic-item-content h3',
-			]
-		);
-
-		$this->add_control(
-			'team_name_color', [
-				'label' => esc_html__('Color', 'monadic-addons'),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#3C2C7D',
-				'selectors' => [
-					'{{WRAPPER}} .monadic-item-content h3' => 'color: {{VALUE}}'
+				'condition' => [
+					'layout' => 'fitRows',
 				],
+				'style_transfer' => true,
 			]
 		);
 
-		$this->add_control(
-			's_team_designation', [
-				'label' => esc_html__('Team Designation', 'monadic-addons'),
-				'type' => Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(), [
-				'name' => 'team_designation_typography',
-				'label' => esc_html__('Typography', 'monadic-addons'),
-				'selector' => '{{WRAPPER}} .monadic-item-content',
-			]
-		);
-
-		$this->add_control(
-			'team_designation_color', [
-				'label' => esc_html__('Color', 'monadic-addons'),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#3C2C7D',
-				'selectors' => [
-					'{{WRAPPER}} .monadic-item-content' => 'color: {{VALUE}}'
-				],
-			]
-		);
 
 		$this->end_controls_section();
 	}
@@ -339,9 +181,9 @@ class Monadic_Image_Gallery extends \Elementor\Widget_Base {
 				if (!empty($settings['images'])):
 					foreach($settings['images'] as $image):
 			?>
-				<div class="monadic-image-gallery-item">
+				<a href="<?php echo esc_attr($image['url']);?>" class="monadic-image-gallery-item">
 						<img src="<?php echo esc_attr($image['url']);?>">
-				</div>
+				</a>
 			<?php 
 					endforeach;
 				endif;			

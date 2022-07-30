@@ -24,8 +24,17 @@
   transition: all .25s;
   -o-object-fit: cover;
   object-fit: cover;
+  object-position: top center;
 }
 
-/* .monadic-image-gallery-item img {
-  height: 400px;
-} */
+.mfp-image-holder .mfp-close, 
+.mfp-iframe-holder .mfp-close,
+button.mfp-close, 
+button.mfp-arrow{
+  background-color: transparent;
+}
+
+.mfp-arrow:hover, .mfp-arrow:focus {
+  background-color: transparent;
+  outline: none;
+}
