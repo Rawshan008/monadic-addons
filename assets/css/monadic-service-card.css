@@ -1,0 +1,65 @@
+.monadic-service-card-wrapper {
+  padding: 15px;
+  padding-bottom: 60px;
+  text-align: center;
+  position: relative;
+  padding-top: 60px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.monadic-service-card-icon {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition: 0.3s;
+  padding: 5px;
+  border-radius: 5px;
+}
+.monadic-service-card-icon svg {
+  width: 50px;
+  height: auto;
+}
+
+.monadic-service-card-icon svg,
+.monadic-service-card-icon i {
+  transform: rotate(-45deg);
+}
+
+.monadic-service-card-wrapper:hover > .monadic-service-card-icon {
+  border-radius: 50%;
+}
+
+.monadic-service-card-content h3 {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.44;
+}
+
+.monadic-service-card-content p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.44;
+}
+
+.monadic-service-card-btn {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  display: inline-block;
+  border-top: 1px solid #ddd;
+  padding: 10px;
+  transition: 0.3s;
+  border-radius: 0 0 3px 3px;
+}
+
+.monadic-service-card-btn:hover {
+  background: #ddd;
+}
