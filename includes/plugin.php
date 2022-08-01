@@ -171,6 +171,8 @@
        */
       wp_register_script( 'isotope', MONADIC_ADDONS_ASSETS .'lib/js/isotope.pkgd.min.js', ['jquery'], MONADIC_ADDONS_VERSION, true );
       wp_register_script( 'magnific-popup', MONADIC_ADDONS_ASSETS .'lib/js/jquery.magnific-popup.min.js', ['jquery'], MONADIC_ADDONS_VERSION, true );
+      wp_register_script( 'waypoints', MONADIC_ADDONS_ASSETS .'lib/js/waypoints.min.js', ['jquery'], MONADIC_ADDONS_VERSION, true );
+      wp_register_script( 'counterup', MONADIC_ADDONS_ASSETS .'lib/js/jquery.counterup.min.js', ['jquery'], MONADIC_ADDONS_VERSION, true );
       
 
       /**
@@ -179,6 +181,7 @@
       wp_register_script( 'monadic-testimonial', MONADIC_ADDONS_ASSETS .'js/monadic-testimonial.js' );
       wp_register_script( 'monadic-teams', MONADIC_ADDONS_ASSETS .'js/monadic-teams.js' );
       wp_register_script( 'monadic-image-gallery', MONADIC_ADDONS_ASSETS .'js/monadic-image-gallery.js' , ['jquery'],  MONADIC_ADDONS_VERSION, true);
+      wp_register_script( 'monadic-counter', MONADIC_ADDONS_ASSETS .'js/monadic-counter.js' , ['jquery'],  MONADIC_ADDONS_VERSION, true);
     }
 
     /**
@@ -197,6 +200,7 @@
       wp_register_style('monadic-teams', MONADIC_ADDONS_ASSETS . 'css/monadic-teams.css' );
       wp_register_style('monadic-image-gallery', MONADIC_ADDONS_ASSETS . 'css/monadic-image-gallery.css' );
       wp_register_style('monadic-service-card', MONADIC_ADDONS_ASSETS . 'css/monadic-service-card.css' );
+      wp_register_style('monadic-counter', MONADIC_ADDONS_ASSETS . 'css/monadic-counter.css' );
 
     }
 
@@ -209,11 +213,13 @@
       require_once( __DIR__ . '/widgets/monadic-teams.php' );
       require_once( __DIR__ . '/widgets/monadic-image-gallery.php' );
       require_once( __DIR__ . '/widgets/monadic-service-card.php' );
+      require_once( __DIR__ . '/widgets/monadic-counter.php' );
   
       $widgets_manager->register( new \Monadic_Addons_Testimonial\Monadic_Testimonial() );
       $widgets_manager->register( new \Monadic_Addons_Testimonial\Monadic_Teams() );
       $widgets_manager->register( new \Monadic_Addons_Testimonial\Monadic_Image_Gallery() );
       $widgets_manager->register( new \Monadic_Addons_Service_Card\Monadic_Service_Card() );
+      $widgets_manager->register( new \Monadic_Addons_Counter\Monadic_Counter() );
     }
 
   }
