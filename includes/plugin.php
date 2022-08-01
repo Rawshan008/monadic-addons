@@ -196,6 +196,7 @@
       wp_register_style('monadic-testimonial', MONADIC_ADDONS_ASSETS . 'css/monadic-testimonial.css' );
       wp_register_style('monadic-teams', MONADIC_ADDONS_ASSETS . 'css/monadic-teams.css' );
       wp_register_style('monadic-image-gallery', MONADIC_ADDONS_ASSETS . 'css/monadic-image-gallery.css' );
+      wp_register_style('monadic-service-card', MONADIC_ADDONS_ASSETS . 'css/monadic-service-card.css' );
 
     }
 
@@ -207,10 +208,12 @@
       require_once( __DIR__ . '/widgets/monadic-testimonial.php' );
       require_once( __DIR__ . '/widgets/monadic-teams.php' );
       require_once( __DIR__ . '/widgets/monadic-image-gallery.php' );
+      require_once( __DIR__ . '/widgets/monadic-service-card.php' );
   
       $widgets_manager->register( new \Monadic_Addons_Testimonial\Monadic_Testimonial() );
       $widgets_manager->register( new \Monadic_Addons_Testimonial\Monadic_Teams() );
       $widgets_manager->register( new \Monadic_Addons_Testimonial\Monadic_Image_Gallery() );
+      $widgets_manager->register( new \Monadic_Addons_Service_Card\Monadic_Service_Card() );
     }
 
   }
