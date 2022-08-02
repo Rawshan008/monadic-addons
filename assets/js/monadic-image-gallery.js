@@ -31,6 +31,8 @@
             if (['layout', 'image_height', 'columns'].indexOf(changedProp) !== -1) {
               this.run();
             }
+
+            
           },
   
           run: function run() {

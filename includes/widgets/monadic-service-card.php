@@ -10,14 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Elementor Testimonial Widget.
+ * Monadic Service Card Widgets
  */
 class Monadic_Service_Card extends \Elementor\Widget_Base{
 
 	/**
 	 * Get widget name.
-	 *
-	 * @return void
 	 */
 	public function get_name() {
 		return 'monadic-service-card';
@@ -25,8 +23,6 @@ class Monadic_Service_Card extends \Elementor\Widget_Base{
 
 	/**
 	 * Get widget title.
-	 *
-	 * @return void
 	 */
 	public function get_title() {
 		return esc_html__( 'Service Card', 'monadic-addons' );
@@ -34,17 +30,13 @@ class Monadic_Service_Card extends \Elementor\Widget_Base{
 
 	/**
 	 * Get widget icon.
-	 *
-	 * @return void
 	 */
 	public function get_icon() {
-		return 'eicon-bullet-list';
+		return 'eicon-menu-card';
 	}
 
 	/**
 	 * Get custom help URL.
-	 *
-	 * @return void
 	 */
 	public function get_custom_help_url() {
 		return '';
@@ -52,8 +44,6 @@ class Monadic_Service_Card extends \Elementor\Widget_Base{
 
 	/**
 	 * Scripts Styles
-	 *
-	 * @return void
 	 */
 	public function get_style_depends() {
 		return ['monadic-service-card'];
@@ -61,8 +51,6 @@ class Monadic_Service_Card extends \Elementor\Widget_Base{
 
 	/**
 	 * Scripts Depends
-	 *
-	 * @return void
 	 */
 	public function get_script_depends() {
 		return [''];
@@ -70,8 +58,6 @@ class Monadic_Service_Card extends \Elementor\Widget_Base{
 
 	/**
 	 * Widgets Category
-	 *
-	 * @return void
 	 */
 	public function get_categories() {
 		return [ 'monadic-addons' ];

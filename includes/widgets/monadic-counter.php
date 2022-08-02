@@ -9,14 +9,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Elementor Testimonial Widget.
+ * Monadic Counter Widgets.
  */
 class Monadic_Counter extends \Elementor\Widget_Base{
 
 	/**
 	 * Get widget name.
-	 *
-	 * @return void
 	 */
 	public function get_name() {
 		return 'monadic-counter';
@@ -24,8 +22,6 @@ class Monadic_Counter extends \Elementor\Widget_Base{
 
 	/**
 	 * Get widget title.
-	 *
-	 * @return void
 	 */
 	public function get_title() {
 		return esc_html__( 'Counter', 'monadic-addons' );
@@ -33,8 +29,6 @@ class Monadic_Counter extends \Elementor\Widget_Base{
 
 	/**
 	 * Get widget icon.
-	 *
-	 * @return void
 	 */
 	public function get_icon() {
 		return 'eicon-bullet-list';
@@ -42,8 +36,6 @@ class Monadic_Counter extends \Elementor\Widget_Base{
 
 	/**
 	 * Get custom help URL.
-	 *
-	 * @return void
 	 */
 	public function get_custom_help_url() {
 		return '';
@@ -51,8 +43,6 @@ class Monadic_Counter extends \Elementor\Widget_Base{
 
 	/**
 	 * Scripts Styles
-	 *
-	 * @return void
 	 */
 	public function get_style_depends() {
 		return ['monadic-counter'];
@@ -60,8 +50,6 @@ class Monadic_Counter extends \Elementor\Widget_Base{
 
 	/**
 	 * Scripts Depends
-	 *
-	 * @return void
 	 */
 	public function get_script_depends() {
 		return ['waypoints', 'counterup', 'monadic-counter'];
@@ -69,15 +57,13 @@ class Monadic_Counter extends \Elementor\Widget_Base{
 
 	/**
 	 * Widgets Category
-	 *
-	 * @return void
 	 */
 	public function get_categories() {
 		return [ 'monadic-addons' ];
 	}
 
 	public function get_keywords() {
-		return [ 'counter', 'Service', 'lists', 'ordered', 'unordered', 'Card' ];
+		return [ 'counter', 'service', 'lists', 'ordered', 'unordered', 'Card' ];
 	}
 
 /**
@@ -269,10 +255,8 @@ public function render() {
 	$number = $settings['number'];
 	$number_post_fix = $settings['number_post_fix'];
 	$description = $settings['description'];
-
-
+	
 	?>
-
 	<div class="monadic-counter-wrapper">
 		
 		<?php if(!empty($icon)): ?>

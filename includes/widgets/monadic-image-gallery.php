@@ -1,19 +1,13 @@
 <?php
-namespace Monadic_Addons_Testimonial;
+namespace Monadic_Addons_Image_Galley;
 use Elementor\Controls_Manager;
-use Elementor\Icons_Manager;
-use \Elementor\Repeater;
-use \Elementor\Group_Control_Typography;
-use \Elementor\Utils;
-use \Elementor\Control_Media;
-use \Elementor\Group_Control_Image_Size;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
 /**
- * Elementor Teams Widget.
+ * Monadic Image Gallery
  */
 class Monadic_Image_Gallery extends \Elementor\Widget_Base {
 
@@ -35,7 +29,7 @@ class Monadic_Image_Gallery extends \Elementor\Widget_Base {
 	 * Get widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-posts-group';
+		return 'eicon-gallery-masonry';
 	}
 
 	/**
@@ -70,7 +64,7 @@ class Monadic_Image_Gallery extends \Elementor\Widget_Base {
 	 * Get widget keywords.
 	 */
 	public function get_keywords() {
-		return [ 'gallery', 'image' ];
+		return [ 'gallery', 'image', 'justified', 'isoteope', 'masenary' ];
 	}
 
 	/**
@@ -152,12 +146,11 @@ class Monadic_Image_Gallery extends \Elementor\Widget_Base {
 					]
 				],
 				'selectors' => [
-					'{{WRAPPER}} .monadic-image-gallery-item img' => 'height: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .monadic-image-gallery-item img' => '--monadic-image-gallery-height: {{SIZE}}{{UNIT}}',
 				],
 				'condition' => [
 					'layout' => 'fitRows',
 				],
-				'style_transfer' => true,
 			]
 		);
 

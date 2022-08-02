@@ -20,7 +20,7 @@
     /**
      * Minimum PHP Version
      */
-    const MINIMUM_PHP_VERSION = '7.3';
+    const MINIMUM_PHP_VERSION = '5.4';
 
     /**
      * Instance
@@ -180,7 +180,7 @@
        */
       wp_register_script( 'monadic-testimonial', MONADIC_ADDONS_ASSETS .'js/monadic-testimonial.js' );
       wp_register_script( 'monadic-teams', MONADIC_ADDONS_ASSETS .'js/monadic-teams.js' );
-      wp_register_script( 'monadic-image-gallery', MONADIC_ADDONS_ASSETS .'js/monadic-image-gallery.js' , ['jquery'],  MONADIC_ADDONS_VERSION, true);
+      wp_register_script( 'monadic-image-gallery', MONADIC_ADDONS_ASSETS .'js/monadic-image-gallery.js' , ['jquery' , 'elementor-frontend'],  MONADIC_ADDONS_VERSION, true);
       wp_register_script( 'monadic-counter', MONADIC_ADDONS_ASSETS .'js/monadic-counter.js' , ['jquery'],  MONADIC_ADDONS_VERSION, true);
     }
 
@@ -209,15 +209,21 @@
      */
     public function register_widgets( $widgets_manager ) {
 
+      /**
+       * Widgets Files
+       */
       require_once( __DIR__ . '/widgets/monadic-testimonial.php' );
       require_once( __DIR__ . '/widgets/monadic-teams.php' );
       require_once( __DIR__ . '/widgets/monadic-image-gallery.php' );
       require_once( __DIR__ . '/widgets/monadic-service-card.php' );
       require_once( __DIR__ . '/widgets/monadic-counter.php' );
   
+      /**
+       * Widgets Classes
+       */
       $widgets_manager->register( new \Monadic_Addons_Testimonial\Monadic_Testimonial() );
-      $widgets_manager->register( new \Monadic_Addons_Testimonial\Monadic_Teams() );
-      $widgets_manager->register( new \Monadic_Addons_Testimonial\Monadic_Image_Gallery() );
+      $widgets_manager->register( new \Monadic_Addons_Teams\Monadic_Teams() );
+      $widgets_manager->register( new \Monadic_Addons_Image_Galley\Monadic_Image_Gallery() );
       $widgets_manager->register( new \Monadic_Addons_Service_Card\Monadic_Service_Card() );
       $widgets_manager->register( new \Monadic_Addons_Counter\Monadic_Counter() );
     }

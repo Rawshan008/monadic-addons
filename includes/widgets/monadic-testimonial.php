@@ -2,15 +2,15 @@
 namespace Monadic_Addons_Testimonial;
 use Elementor\Controls_Manager;
 use Elementor\Icons_Manager;
-use \Elementor\Repeater;
-use \Elementor\Group_Control_Typography;
+use Elementor\Repeater;
+use Elementor\Group_Control_Typography;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
 /**
- * Elementor Testimonial Widget.
+ * Monadic Testimonial Widgets
  */
 class Monadic_Testimonial extends \Elementor\Widget_Base {
 

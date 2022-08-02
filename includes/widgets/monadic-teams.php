@@ -1,19 +1,16 @@
 <?php
-namespace Monadic_Addons_Testimonial;
+namespace Monadic_Addons_Teams;
 use Elementor\Controls_Manager;
-use Elementor\Icons_Manager;
-use \Elementor\Repeater;
-use \Elementor\Group_Control_Typography;
-use \Elementor\Utils;
-use \Elementor\Control_Media;
-use \Elementor\Group_Control_Image_Size;
+use Elementor\Repeater;
+use Elementor\Group_Control_Typography;
+use Elementor\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
 /**
- * Elementor Teams Widget.
+ * Monadic Teams Widgets
  */
 class Monadic_Teams extends \Elementor\Widget_Base {
 
