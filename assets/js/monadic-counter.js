@@ -29,8 +29,6 @@
         run: function run() {
           this.elements.$container.counterUp(this.getDefaultSettings());
         }
-
-  
     
     })
 

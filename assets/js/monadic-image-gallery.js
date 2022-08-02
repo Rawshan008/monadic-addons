@@ -13,8 +13,6 @@
           getDefaultSettings: function getDefaultSettings() {
             var defaultSettings = {
                 itemSelector: '.monadic-image-gallery-item',
-                percentPosition: true,
-                layoutMode: this.getElementSettings('layout'),
             }
   
             return defaultSettings;
@@ -44,9 +42,6 @@
                 }
             });
           }
-  
-    
-      
       })
   
   

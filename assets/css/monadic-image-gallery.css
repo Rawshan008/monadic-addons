@@ -1,6 +1,6 @@
+/* Monadic Image Gallery CSS */
 :root {
   --image-grid-column: 3;
-  --monadic-image-gallery-height: auto;
 }
 
 .monadic-image-gallery-wrapper {
@@ -26,7 +26,6 @@
   -o-object-fit: cover;
   object-fit: cover;
   object-position: top center;
-  height: var(--monadic-image-gallery-height);
 }
 
 .mfp-image-holder .mfp-close, 

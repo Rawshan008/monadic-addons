@@ -1,26 +1,26 @@
 (function ($, elementor) {
 
   'use strict';
-  var widgetFiestar = function ($scope, $) {
+  var widgetTestimonial = function ($scope, $) {
 
-      var $fiestar = $scope.find('.monadic-testimonial-wrapper');
-      if (!$fiestar.length) {
+      var $testimonial = $scope.find('.monadic-testimonial-wrapper');
+      if (!$testimonial.length) {
           return;
       }
-      var $fiestarContainer = $fiestar.find('.monadic-testimonial-slider'),
-          $settings = $fiestar.data('settings');
+      var $testimonialContainer = $testimonial.find('.monadic-testimonial-slider'),
+          $settings = $testimonial.data('settings');
 
       const Swiper = elementorFrontend.utils.swiper;
       initSwiper();
       async function initSwiper() {
-          var swiper = await new Swiper($fiestarContainer, $settings);
+          var swiper = await new Swiper($testimonialContainer, $settings);
       };
 
   };
 
 
   jQuery(window).on('elementor/frontend/init', function () {
-      elementorFrontend.hooks.addAction('frontend/element_ready/monadic-testimonial.default', widgetFiestar);
+      elementorFrontend.hooks.addAction('frontend/element_ready/monadic-testimonial.default', widgetTestimonial);
   });
 
 }(jQuery, window.elementorFrontend));
