@@ -26,7 +26,7 @@
           },
   
           onElementChange: function onElementChange(changedProp) {
-            if (['layout', 'image_height', 'columns'].indexOf(changedProp) !== -1) {
+            if (['columns', 'columns_tablet', 'columns_mobile'].indexOf(changedProp) !== -1) {
               this.run();
             }
 

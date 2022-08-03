@@ -191,7 +191,7 @@
       /**
        * Lib CSS
        */
-      wp_register_style('magnific-popup', EATHIM_ADDONS_ASSETS .'lib/css/magnific-popup.css' );
+      wp_register_style('magnific-popup', MONADIC_ADDONS_ASSETS .'lib/css/magnific-popup.css' );
 
       /**
        * Custom CSS

@@ -31,7 +31,7 @@ class Monadic_Counter extends \Elementor\Widget_Base{
 	 * Get widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-bullet-list';
+		return 'eicon-counter-circle';
 	}
 
 	/**
