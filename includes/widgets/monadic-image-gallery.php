@@ -43,14 +43,14 @@ class Monadic_Image_Gallery extends \Elementor\Widget_Base {
 	 * Get Custom CSS Files
 	 */
 	public function get_style_depends() {
-		return ['magnific-popup', 'monadic-image-gallery'];
+		return ['lightbox', 'monadic-image-gallery'];
 	}
 
 	/**
 	 * Get Custom Js Files
 	 */
 	public function get_script_depends() {
-		return ['isotope', 'magnific-popup', 'monadic-image-gallery'];
+		return ['isotope', 'lightbox', 'monadic-image-gallery'];
 	}
 
 	/**
@@ -139,7 +139,7 @@ class Monadic_Image_Gallery extends \Elementor\Widget_Base {
 				if (!empty($settings['images'])):
 					foreach($settings['images'] as $image):
 			?>
-				<a href="<?php echo esc_attr($image['url']);?>" class="monadic-image-gallery-item">
+				<a href="<?php echo esc_attr($image['url']);?>" class="monadic-image-gallery-item" data-lightbox="monadic-lightbox">
 						<img src="<?php echo esc_attr($image['url']);?>">
 				</a>
 			<?php 

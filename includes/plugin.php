@@ -170,7 +170,7 @@
        * Lib files
        */
       wp_register_script( 'isotope', MONADIC_ADDONS_ASSETS .'lib/js/isotope.pkgd.min.js', ['jquery', 'elementor-frontend'], MONADIC_ADDONS_VERSION, true );
-      wp_register_script( 'magnific-popup', MONADIC_ADDONS_ASSETS .'lib/js/jquery.magnific-popup.min.js', ['jquery'], MONADIC_ADDONS_VERSION, true );
+      wp_register_script( 'lightbox', MONADIC_ADDONS_ASSETS .'lib/js/lightbox.min.js', ['jquery', 'elementor-frontend'], MONADIC_ADDONS_VERSION, true );
       wp_register_script( 'waypoints', MONADIC_ADDONS_ASSETS .'lib/js/waypoints.min.js', ['jquery'], MONADIC_ADDONS_VERSION, true );
       wp_register_script( 'counterup', MONADIC_ADDONS_ASSETS .'lib/js/jquery.counterup.min.js', ['jquery'], MONADIC_ADDONS_VERSION, true );
       
@@ -191,7 +191,7 @@
       /**
        * Lib CSS
        */
-      wp_register_style('magnific-popup', MONADIC_ADDONS_ASSETS .'lib/css/magnific-popup.css' );
+      wp_register_style('lightbox', MONADIC_ADDONS_ASSETS .'lib/css/lightbox.min.css' );
 
       /**
        * Custom CSS
