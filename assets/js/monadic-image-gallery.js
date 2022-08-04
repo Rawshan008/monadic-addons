@@ -29,18 +29,10 @@
             if (['columns', 'columns_tablet', 'columns_mobile'].indexOf(changedProp) !== -1) {
               this.run();
             }
-
-            
           },
   
           run: function run() {
-            this.elements.$container.isotope(this.getDefaultSettings());
-            this.elements.$containerPopup.magnificPopup({
-                type: 'image',
-                gallery:{
-                  enabled:true
-                }
-            });
+            this.elements.$container.isotope(this.getDefaultSettings());        
           }
       })
   
