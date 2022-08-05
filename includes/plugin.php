@@ -169,6 +169,7 @@
       /**
        * Lib files
        */
+      wp_register_script( 'imagesloaded.', MONADIC_ADDONS_ASSETS .'lib/js/imagesloaded.pkgd.min.js', ['jquery', 'elementor-frontend'], MONADIC_ADDONS_VERSION, true );
       wp_register_script( 'isotope', MONADIC_ADDONS_ASSETS .'lib/js/isotope.pkgd.min.js', ['jquery', 'elementor-frontend'], MONADIC_ADDONS_VERSION, true );
       wp_register_script( 'lightbox', MONADIC_ADDONS_ASSETS .'lib/js/lightbox.min.js', ['jquery', 'elementor-frontend'], MONADIC_ADDONS_VERSION, true );
       wp_register_script( 'waypoints', MONADIC_ADDONS_ASSETS .'lib/js/waypoints.min.js', ['jquery'], MONADIC_ADDONS_VERSION, true );
@@ -178,10 +179,10 @@
       /**
        * Custom Files
        */
-      wp_register_script( 'monadic-testimonial', MONADIC_ADDONS_ASSETS .'js/monadic-testimonial.js' );
-      wp_register_script( 'monadic-teams', MONADIC_ADDONS_ASSETS .'js/monadic-teams.js' );
-      wp_register_script( 'monadic-image-gallery', MONADIC_ADDONS_ASSETS .'js/monadic-image-gallery.js' , ['jquery', 'isotope', 'elementor-frontend'],  MONADIC_ADDONS_VERSION, true);
-      wp_register_script( 'monadic-counter', MONADIC_ADDONS_ASSETS .'js/monadic-counter.js' , ['jquery'],  MONADIC_ADDONS_VERSION, true);
+      wp_register_script( 'monadic-testimonial', MONADIC_ADDONS_ASSETS .'js/monadic-testimonial.js', ['elementor-frontend'], MONADIC_ADDONS_VERSION, true );
+      wp_register_script( 'monadic-teams', MONADIC_ADDONS_ASSETS .'js/monadic-teams.js',  ['elementor-frontend'], MONADIC_ADDONS_VERSION, true );
+      wp_register_script( 'monadic-image-gallery', MONADIC_ADDONS_ASSETS .'js/monadic-image-gallery.js' , ['elementor-frontend'], MONADIC_ADDONS_VERSION, true);
+      wp_register_script( 'monadic-counter', MONADIC_ADDONS_ASSETS .'js/monadic-counter.js' , ['jquery', 'elementor-frontend'], MONADIC_ADDONS_VERSION, true);
     }
 
     /**

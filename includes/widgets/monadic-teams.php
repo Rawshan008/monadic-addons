@@ -162,8 +162,7 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 				'min' => 1,
 				'max' => 5,
 				'step' => 1,
-				'devices' => [ 'desktop', 'tablet', 'mobile' ],
-				'desktop_default' => 3,
+				'default' => 3,
 				'tablet_default' => 2,
 				'mobile_default' => 1,
 			]
@@ -176,8 +175,7 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 				'min' => 1,
 				'max' => 5,
 				'step' => 1,
-				'devices' => [ 'desktop', 'tablet', 'mobile' ],
-				'desktop_default' => 3,
+				'default' => 3,
 				'tablet_default' => 2,
 				'mobile_default' => 1,
 			]
@@ -404,17 +402,17 @@ class Monadic_Teams extends \Elementor\Widget_Base {
 						"loop" => ("yes" == $settings['infinity_loop'])? true : false,
 						"autoplay" => ( "yes" == $settings["autoplay"] ) ? [ "delay" => $settings["autoplay_speed"] ] : false,
 						"speed"  => $settings["animation_speed"],
-						"slidesPerView" => (isset($settings['slider_per_view_mobile']) ? (int) $settings['slider_per_view_mobile'] : 1),
-        		"spaceBetween" => (isset($settings['space_between']) ? $settings['space_between'] : 30),
-						"slidesPerGroup" => (isset($settings['slider_per_group_mobile']) ? (int) $settings['slider_per_group_mobile'] : 1),
+						"slidesPerView" => isset($settings['slider_per_view_mobile']) ? $settings['slider_per_view_mobile'] : 1,
+						"slidesPerGroup" => isset($settings['slider_per_group_mobile']) ? $settings['slider_per_group_mobile'] : 1,
+        		"spaceBetween" => isset($settings['space_between']) ? $settings['space_between'] : 30,
 						"breakpoints" => [
-							"767" => [
-								"slidesPerView" => isset($settings['slider_per_view_tablet']) ? (int) $settings['slider_per_view_tablet'] : 2,
-								"slidesPerGroup" => isset($settings['slider_per_group_tablet']) ? (int) $settings['slider_per_group_tablet'] : 2,
+							767 => [
+								"slidesPerView" => isset($settings['slider_per_view_tablet']) ? $settings['slider_per_view_tablet'] : 2,
+								"slidesPerGroup" => isset($settings['slider_per_group_tablet']) ? $settings['slider_per_group_tablet'] : 2
 							],
-							"1023" => [
-								"slidesPerView" => isset($settings['slider_per_view']) ? (int) $settings['slider_per_view'] : 3,
-								"slidesPerGroup" => isset($settings['slider_per_group']) ? (int) $settings['slider_per_group'] : 3,
+							1023 => [
+								"slidesPerView" => isset($settings['slider_per_view']) ? $settings['slider_per_view'] : 3,
+								"slidesPerGroup" => isset($settings['slider_per_group']) ? $settings['slider_per_group'] : 3,
 							],
 						],
 						"pagination" => [
