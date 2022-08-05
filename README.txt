@@ -43,7 +43,7 @@ This section describes how to install the plugin and get it working.
 == Screenshots ==
 
 1. teams
-2. service-card
+2. service card
 3. counter
 4. testimonial
 1. gallery
