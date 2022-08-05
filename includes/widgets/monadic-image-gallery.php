@@ -50,7 +50,7 @@ class Monadic_Image_Gallery extends \Elementor\Widget_Base {
 	 * Get Custom Js Files
 	 */
 	public function get_script_depends() {
-		return ['isotope', 'lightbox', 'monadic-image-gallery'];
+		return ['imagesloaded', 'isotope', 'lightbox', 'monadic-image-gallery'];
 	}
 
 	/**

@@ -30,9 +30,13 @@
               this.run();
             }
           },
+
   
           run: function run() {
-            this.elements.$container.isotope(this.getDefaultSettings());        
+            var self = this;
+            self.elements.$container.isotope(self.getDefaultSettings()).imagesLoaded().progress(function () {
+              self.elements.$container.isotope();
+            });
           }
       })
   
