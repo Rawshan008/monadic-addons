@@ -14,6 +14,8 @@ Monadic Addons plugin is the free plugin for Elementor.
 
 Monadic Addons plugin is the free plugin for Elementor. It has most essential widgets user. list as Testimonial Slider, Team Slider, Service Card, Image Gallery, and Counter.
 
+**[View Demo](https://monadic.rawshanali.com/)**
+
 == Feature ==
 
 1. Testimonial Slider
@@ -35,4 +37,13 @@ This section describes how to install the plugin and get it working.
 == It's not working ==
 
 - Step 1. Check if your Plugin is activated.
-- Step 2. Deactivate all plugins and reactivate Block Patterns Collection.
+- Step 2. Deactivate all plugins and reactivate This plugin.
+
+
+== Screenshots ==
+
+1. teams
+2. service card
+3. counter
+4. testimonial
+1. gallery
