@@ -169,6 +169,7 @@
       /**
        * Lib files
        */
+      wp_register_script( 'imagesloaded.', MONADIC_ADDONS_ASSETS .'lib/js/imagesloaded.pkgd.min.js', ['jquery', 'elementor-frontend'], MONADIC_ADDONS_VERSION, true );
       wp_register_script( 'isotope', MONADIC_ADDONS_ASSETS .'lib/js/isotope.pkgd.min.js', ['jquery', 'elementor-frontend'], MONADIC_ADDONS_VERSION, true );
       wp_register_script( 'lightbox', MONADIC_ADDONS_ASSETS .'lib/js/lightbox.min.js', ['jquery', 'elementor-frontend'], MONADIC_ADDONS_VERSION, true );
       wp_register_script( 'waypoints', MONADIC_ADDONS_ASSETS .'lib/js/waypoints.min.js', ['jquery'], MONADIC_ADDONS_VERSION, true );
