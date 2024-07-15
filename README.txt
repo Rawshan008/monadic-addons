@@ -58,3 +58,4 @@ This section describes how to install the plugin and get it working.
 * Fix Swiper Slider Issue
 * Fix SVG Icon Issue 
 * Fix PHP and Elementor Versions
+* Fix CSS
