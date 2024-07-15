@@ -1,12 +1,11 @@
 === Monadic Addons For Elementor ===
 Contributors: rawshan008
-Tags: Elementor, Addons, Widgets, Slider, Card, Testimonial, Counter
-Requires at least: 4.7
-Tested up to: 6.0.1
-Stable tag: 1.0.0
-Requires PHP: 5.4
-License: GPL-2.0+
-License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+Tags: Elementor, Addons, Widgets, Slider, Testimonial
+Requires at least: 5.8
+Tested up to: 6.5.5
+Stable tag: 1.0.1
+Requires PHP: 7.4
+License: GPLv2 or later
 
 Monadic Addons plugin is the free plugin for Elementor.
 
@@ -47,3 +46,15 @@ This section describes how to install the plugin and get it working.
 3. counter
 4. testimonial
 1. gallery
+
+
+
+== Changelog ==
+
+= 1.0.1 =
+*Release Date - 16 July 2024*
+
+* Update Swiper Slider Class Name
+* Fix Swiper Slider Issue
+* Fix SVG Icon Issue 
+* Fix PHP and Elementor Versions

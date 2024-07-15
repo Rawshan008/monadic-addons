@@ -1,21 +1,21 @@
-<?php 
+<?php
+
 /**
  * Plugin Name:         Monadic Addons For Elementor
  * Description:         Monadic Addons plugin is the free plugin for Elementor. It has most essential widgets user. list as Testimonial Slider, Team Slider, Service Card, Image Gallery, and Counter 
- * Plugin URI:          #
- * Version:             1.0.0
+ * Plugin URI:          https://monadic.rawshanali.com/
+ * Version:             1.0.1
  * Author:              Rawshan
  * Author URI:          https://rawshanali.com/
- * License:             GPL-2.0+
- * License URI:         http://www.gnu.org/licenses/gpl-2.0.txt
+ * License:             GPLv2 or later
  * Text Domain:         monadic-addons
  * Domain Path:         /languages
  * 
- * Elementor tested up to:     3.6.8
- * Elementor Pro tested up to: 3.6.8
+ * Elementor tested up to:     3.23.1
+ * Elementor Pro tested up to: 3.23.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Currently plugin version.
  * Start at version 1.0.0 and use SemVer - https://semver.org
  */
-define( 'MONADIC_ADDONS_VERSION', '1.0.0' );
+define('MONADIC_ADDONS_VERSION', '1.0.1');
 
 /**
  * Define Necessary Constant
@@ -37,7 +37,8 @@ define('MONADIC_ADDONS_ASSETS', trailingslashit(MONADIC_ADDONS_DIR_URL . 'assets
  * The code that runs during plugin activation.
  * This action is documented in includes/class-monadic-addons-activator.php
  */
-function activate_monadic_addons() {
+function activate_monadic_addons()
+{
 	require_once MONADIC_ADDONS_DIR_PATH . 'includes/admin/class-monadic-addons-activator.php';
 	Monadic_Addons_Activator::activate();
 }
@@ -47,14 +48,15 @@ function activate_monadic_addons() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-monadic-addons-deactivator.php
  */
-function deactivate_monadic_addons() {
+function deactivate_monadic_addons()
+{
 	require_once MONADIC_ADDONS_DIR_PATH . 'includes/admin/class-monadic-addons-deactivator.php';
 	Monadic_Addons_Deactivator::deactivate();
 }
 
 
-register_activation_hook( MONADIC_ADDONS_FILE, 'activate_monadic_addons' );
-register_deactivation_hook( MONADIC_ADDONS_FILE, 'deactivate_monadic_addons' );
+register_activation_hook(MONADIC_ADDONS_FILE, 'activate_monadic_addons');
+register_deactivation_hook(MONADIC_ADDONS_FILE, 'deactivate_monadic_addons');
 
 
 /**
@@ -74,10 +76,10 @@ require MONADIC_ADDONS_DIR_PATH . 'includes/admin/class-monadic-addons.php';
  *
  * @since    1.0.0
  */
-function run_monadic_addons() {
+function run_monadic_addons()
+{
 
 	$plugin = new Monadic_Addons();
 	$plugin->run();
-
 }
 run_monadic_addons();

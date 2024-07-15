@@ -18,6 +18,11 @@
   color: #fff;
 }
 
+.monadic-testimonial-button-next svg, 
+.monadic-testimonial-button-prev svg{
+  height: 20px;
+}
+
 .monadic-testimonial-button-prev {
   left: auto;
   right: 0;
@@ -30,7 +35,7 @@
   opacity: 0.5;
 }
 
-.monadic-testimonial-wrapper .swiper-container {
+.monadic-testimonial-wrapper .swiper {
   width: calc(100% - 100px);
   position: static;
 }
@@ -51,6 +56,10 @@
   font-size: 24px;
   color: #fff;
   margin-bottom: 40px;
+}
+
+.monadic-testimonial-icons svg {
+  height: 40px;
 }
 
 .monadic-testimonial-item p {
@@ -78,7 +87,7 @@
   font-weight: 400;
 }
 
-.monadic-testimonial-wrapper .swiper-container {
+.monadic-testimonial-wrapper .swiper {
   margin-bottom: 50px;
 }
 
@@ -88,7 +97,7 @@
   border-radius: 10px;
 }
 
-.monadic-testimonial-wrapper .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+.monadic-testimonial-wrapper .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
   margin: 0 4px;
 }
 
