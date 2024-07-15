@@ -2,17 +2,21 @@ name: Deploy to WordPress.org
 on:
   push:
     tags:
-      - "*"
-      - "!*_*"
+    - "*"
 jobs:
   tag:
     name: New tag
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: WordPress Plugin Deploy # Remove or modify this step as needed
-        uses: 10up/action-wordpress-plugin-deploy@master
-        env:
-          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SLUG: monadic-addons-for-elementor
+    - uses: actions/checkout@master
+    - name: Build # Remove or modify this step as needed
+      run: |
+        npm install
+        npm run build
+    - name: WordPress Plugin Deploy
+      uses: 10up/action-wordpress-plugin-deploy@stable
+      env:
+        SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+        SLUG: monadic-addons-for-elementor # optional, remove if GitHub repo name matches SVN slug, including capitalization
+        
