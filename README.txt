@@ -3,7 +3,7 @@ Contributors: rawshan008
 Tags: Elementor, Addons, Widgets, Slider, Testimonial
 Requires at least: 6.5
 Tested up to: 6.9
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 Requires PHP: 7.4
 License: GPLv2 or later
 
@@ -61,9 +61,16 @@ This section describes how to install the plugin and get it working.
 * Fix CSS
 
 = 1.0.2 =
-*Release Date - 21 January 2026*
+*Release Date - 21 January 2025*
 
 * Update Swiper Slider
 * Fix Swiper Slider Issue
 * Fix PHP and Elementor Versions
 * Fix CSS
+
+= 1.0.3 =
+*Release Date - 21 January 2026*
+
+* Update Swiper Slider
+* Fix Swiper Slider Issue
+* Fix PHP and Elementor Versions
