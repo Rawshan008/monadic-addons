@@ -54,7 +54,7 @@ class Monadic_Testimonial extends \Elementor\Widget_Base
 	 */
 	public function get_style_depends()
 	{
-		return ['monadic-testimonial'];
+		return ['swiper','monadic-testimonial'];
 	}
 
 	/**
@@ -62,7 +62,7 @@ class Monadic_Testimonial extends \Elementor\Widget_Base
 	 */
 	public function get_script_depends()
 	{
-		return ['monadic-testimonial'];
+		return ['swiper','monadic-testimonial'];
 	}
 
 	/**

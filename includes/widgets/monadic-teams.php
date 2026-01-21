@@ -54,7 +54,7 @@ class Monadic_Teams extends \Elementor\Widget_Base
 	 */
 	public function get_style_depends()
 	{
-		return ['monadic-teams'];
+		return ['swiper','monadic-teams'];
 	}
 
 	/**
@@ -62,7 +62,7 @@ class Monadic_Teams extends \Elementor\Widget_Base
 	 */
 	public function get_script_depends()
 	{
-		return ['monadic-teams'];
+		return ['swiper','monadic-teams'];
 	}
 
 	/**
