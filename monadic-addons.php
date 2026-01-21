@@ -4,15 +4,14 @@
  * Plugin Name:         Monadic Addons For Elementor
  * Description:         Monadic Addons plugin is the free plugin for Elementor. It has most essential widgets user. list as Testimonial Slider, Team Slider, Service Card, Image Gallery, and Counter 
  * Plugin URI:          https://monadic.rawshanali.com/
- * Version:             1.0.1
+ * Version:             1.0.2
  * Author:              Rawshan
  * Author URI:          https://rawshanali.com/
  * License:             GPLv2 or later
  * Text Domain:         monadic-addons
  * Domain Path:         /languages
  * 
- * Elementor tested up to:     3.23.1
- * Elementor Pro tested up to: 3.23.0
+ * Elementor tested up to:     3.34.2
  */
 
 if (!defined('ABSPATH')) {
